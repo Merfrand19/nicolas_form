@@ -108,7 +108,7 @@
                         </div>
                         <div class="input-row">
                             <label for="tel">Numéro *</label>
-                            <input type="tel" class="input_" id="tel" name="Tél" required placeholder="06 12 34 56 18">
+                            <input type="tel" class="input_" id="tel" name="Tél" required >
                         </div>
                         <div class="input-row">
                             <label for="email">Email *</label>
@@ -145,5 +145,25 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.0/build/js/intlTelInput.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Initialiser intl-tel-input avec toutes les options par défaut
+        const input = document.querySelector("#tel");
+        const iti = window.intlTelInput(input, {
+          // Les options par défaut affichent tous les pays
+          utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.0/build/js/utils.js" // Pour le formatage des numéros
+        });
+    
+        // Récupérer le code du pays sélectionné lors de la soumission du formulaire
+        document.getElementById('phone-form').addEventListener('submit', e => {
+          e.preventDefault();
+          const phoneNumber = iti.getNumber(); // Numéro avec l'indicatif du pays
+          const countryCode = iti.getSelectedCountryData().iso2; // Code du pays
+    
+          console.log("Numéro de téléphone:", phoneNumber);
+          console.log("Code du pays:", countryCode);
+    
+          // Vous pouvez maintenant envoyer ces données à votre serveur ou les utiliser comme vous le souhaitez
+        });
+      </script>
 </body>
 </html>

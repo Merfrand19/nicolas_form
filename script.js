@@ -100,9 +100,12 @@ document.querySelectorAll('.kililou-label').forEach(label => {
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzBnaoxPRD2MnDIddSzLQrX1wNqWsZ-q9go7_qpRSW49JSMi_eM3BMcD20nY2Ayxal0GA/exec'
 const form = document.forms['formulaire']
+const numeroTelephone= 
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+  const tel = document.getElementById('tel');
+  tel.value = iti.getNumber();
   const formData = new FormData(form);
   fetch(scriptURL, { method: 'POST', body: formData })
     .then(response => {
