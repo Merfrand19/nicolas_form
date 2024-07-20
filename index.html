@@ -20,7 +20,7 @@
                         <input type="radio" id="maison" name="Vous habitez" value="maison">
                         <label for="maison" class="kililou-label"><img src="images/maison.png" alt="">Maison</label>
                         <input type="radio" id="appartement" name="Vous habitez"value="appartement">
-                        <label for="appartement" class="kililou-label"><img src="images/appartement.png" alt="">Appartement</label>
+                        <label for="appartement" class="label-finSimulation"><img src="images/appartement.png" alt="">Appartement</label>
                     </div>
 
                 </div>
@@ -32,7 +32,7 @@
                         <input type="radio" id="proprietaire" name="Vous êtes" value="proprietaire">
                         <label for="proprietaire" class="kililou-label"><img src="images/proprietaire.png" alt="">Propriétaire</label>
                         <input type="radio" id="locataire" name="Vous êtes"value="locataire">
-                        <label for="locataire" class="kililou-label"><img src="images/locataire.png" alt="">Locataire</label>
+                        <label for="locataire" class="label-finSimulation"><img src="images/locataire.png" alt="">Locataire</label>
                     </div>
 
                 </div>
@@ -139,31 +139,12 @@
 
                 <span class="button-next kililou-btn" id="next">ok</span>
                 <input type="submit" class="kililou-btn" id="btnSubmit" value="Envoyer">
+                <div id="loader" style="display: none;"></div>
             </div>
         </form>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.0/build/js/intlTelInput.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Initialiser intl-tel-input avec toutes les options par défaut
-        const input = document.querySelector("#tel");
-        const iti = window.intlTelInput(input, {
-          // Les options par défaut affichent tous les pays
-          utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.0/build/js/utils.js" // Pour le formatage des numéros
-        });
-    
-        // Récupérer le code du pays sélectionné lors de la soumission du formulaire
-        document.getElementById('phone-form').addEventListener('submit', e => {
-          e.preventDefault();
-          const phoneNumber = iti.getNumber(); // Numéro avec l'indicatif du pays
-          const countryCode = iti.getSelectedCountryData().iso2; // Code du pays
-    
-          console.log("Numéro de téléphone:", phoneNumber);
-          console.log("Code du pays:", countryCode);
-    
-          // Vous pouvez maintenant envoyer ces données à votre serveur ou les utiliser comme vous le souhaitez
-        });
-      </script>
 </body>
 </html>

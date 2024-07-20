@@ -1,3 +1,13 @@
+const input = document.querySelector("#tel");
+const iti = window.intlTelInput(input, {
+    // Les options par défaut affichent tous les pays
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.0/build/js/utils.js" // Pour le formatage des numéros
+});
+
+const submitButton = document.getElementById('btnSubmit');
+const nextButton = document.getElementById('next');
+const loader = document.getElementById('loader');
+
 const swiper = new Swiper('.swiper', {
     navigation: {
         nextEl: '.button-next',
@@ -97,13 +107,23 @@ document.querySelectorAll('.kililou-label').forEach(label => {
         }, 500);
     });
 });
+document.querySelectorAll('.label-finSimulation').forEach(label => {
+    label.addEventListener('click', (event) => {
+            event.preventDefault(); // Prévenir le comportement par défaut
+            document.getElementById('next').style.display = 'none';
+            window.location.href = 'https://www.ecoethabitation.com/pas-eligible'
+    });
+});
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzBnaoxPRD2MnDIddSzLQrX1wNqWsZ-q9go7_qpRSW49JSMi_eM3BMcD20nY2Ayxal0GA/exec'
 const form = document.forms['formulaire']
-const numeroTelephone= 
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+
+  submitButton.classList.add('loading');
+  loader.style.display = 'inline-block';
+
   const tel = document.getElementById('tel');
   tel.value = iti.getNumber();
   const formData = new FormData(form);
@@ -118,5 +138,10 @@ form.addEventListener('submit', e => {
     .catch(error => {
       alert('Une erreur est survenue. Veuillez réessayer.');
       console.error('Error!', error.message);
+    })
+    .finally(() => {
+        // Cacher le loader et réactiver le bouton de soumission
+        submitButton.classList.remove('loading');
+        loader.style.display = 'none';
     });
 });
