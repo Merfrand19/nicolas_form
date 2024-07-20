@@ -88,6 +88,7 @@ document.querySelector('.button-next').addEventListener('click', () => {
     }
 });
 
+
 document.querySelectorAll('.kililou-label').forEach(label => {
     label.addEventListener('click', () => {
         // Add a small delay to ensure the radio button is selected before sliding

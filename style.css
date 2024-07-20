@@ -129,7 +129,7 @@ form {
         margin: 0px;
     }
     .avertissement span{
-        display: block;
+        display: block !important;
         width: 100%;
     }
     .response label img{
@@ -140,6 +140,11 @@ form {
 input[type="radio"]:checked + label {
     background-color: rgba(1, 66, 172, 0.3); /* Un bleu plus foncé */
     box-shadow: rgba(1, 66, 172, 0.9) 0px 0px 0px 1px; /* Une ombre plus prononcée */
+}
+
+
+#btnSubmit{
+    display: none;
 }
 
 .avertissement{
