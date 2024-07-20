@@ -106,7 +106,7 @@ form {
 
 @media screen and (max-width: 767px) {
     form{
-        font-size: 22px;
+        /*font-size: 22px;*/
         width: 90%;
         margin-right: 5%;
         margin-left: 5%;
