@@ -91,11 +91,29 @@ document.querySelector('.button-next').addEventListener('click', () => {
 
 document.querySelectorAll('.kililou-label').forEach(label => {
     label.addEventListener('click', () => {
-        // Add a small delay to ensure the radio button is selected before sliding
         avertissement.style.visibility="hidden";
         setTimeout(() => {
-            //updateNavigation();
             swiper.slideNext();
         }, 500);
+    });
+});
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzBnaoxPRD2MnDIddSzLQrX1wNqWsZ-q9go7_qpRSW49JSMi_eM3BMcD20nY2Ayxal0GA/exec'
+const form = document.forms['formulaire']
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  fetch(scriptURL, { method: 'POST', body: formData })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = 'https://www.ecoethabitation.com/remerciement-confirmation';
+      } else {
+        alert('Une erreur est survenue. Veuillez réessayer.');
+      }
+    })
+    .catch(error => {
+      alert('Une erreur est survenue. Veuillez réessayer.');
+      console.error('Error!', error.message);
     });
 });

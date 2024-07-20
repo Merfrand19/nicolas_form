@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.0/build/css/intlTelInput.css">
     <title>Document</title>
 </head>
 <body>
     <section id="kililou-section">
-        <form action="" method="post" class="swiper">
+        <form name="formulaire" action="https://script.google.com/macros/s/AKfycbzBnaoxPRD2MnDIddSzLQrX1wNqWsZ-q9go7_qpRSW49JSMi_eM3BMcD20nY2Ayxal0GA/exec" method="post" class="swiper">
             <div class="swiper-wrapper">
 
                 <div class="form-slider-1 swiper-slide">
@@ -107,11 +108,11 @@
                         </div>
                         <div class="input-row">
                             <label for="tel">Numéro *</label>
-                            <input type="tel" class="input_" id="tel" name="tel" required placeholder="06 12 34 56 18">
+                            <input type="tel" class="input_" id="tel" name="Tél" required placeholder="06 12 34 56 18">
                         </div>
                         <div class="input-row">
                             <label for="email">Email *</label>
-                            <input type="mail" class="input_" id="email" name="email" required placeholder="name@exemple.com" aria-label="Saisissez votre nom">
+                            <input type="mail" class="input_" id="email" name="Email" required placeholder="name@exemple.com" aria-label="Saisissez votre nom">
                         </div>
                     </div>
 
@@ -135,12 +136,14 @@
                 <span>Assurez-vous d'avoir rempli tout les champs ou faire une selection</span>
             </div>
             <div class="btn-form">
+
                 <span class="button-next kililou-btn" id="next">ok</span>
                 <input type="submit" class="kililou-btn" id="btnSubmit" value="Envoyer">
             </div>
         </form>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.0/build/js/intlTelInput.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
