@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <section id="kililou-section">
+        <form action="" method="post" class="swiper">
+            <div class="swiper-wrapper">
+
+                <div class="form-slider-1 swiper-slide">
+                    <h4 class="question">Vous habitez ?*</h4>
+
+                    <div class="response">
+                        <input type="radio" id="maison" name="Vous habitez" value="maison">
+                        <label for="maison" class="kililou-label"><img src="images/maison.png" alt="">Maison</label>
+                        <input type="radio" id="appartement" name="Vous habitez"value="appartement">
+                        <label for="appartement" class="kililou-label"><img src="images/appartement.png" alt="">Appartement</label>
+                    </div>
+
+                </div>
+
+                <div class="form-slider-2 swiper-slide">
+                    <h4 class="question">Vous êtes ?*</h4>
+
+                    <div class="response">
+                        <input type="radio" id="proprietaire" name="Vous êtes" value="proprietaire">
+                        <label for="proprietaire" class="kililou-label"><img src="images/proprietaire.png" alt="">Propriétaire</label>
+                        <input type="radio" id="locataire" name="Vous êtes"value="locataire">
+                        <label for="locataire" class="kililou-label"><img src="images/locataire.png" alt="">Locataire</label>
+                    </div>
+
+                </div>
+
+                <div class="form-slider-3 swiper-slide">
+                    <h4 class="question">Votre mode de chauffage ?*</h4>
+
+                    <div class="response">
+                        <input type="radio" id="electricite" name="Mode de chauffage" value="electricite">
+                        <label for="electricite" class="kililou-label"><img src="images/electricite.png" alt="">Electricité</label>
+                        <input type="radio" id="gaz" name="Mode de chauffage"value="gaz">
+                        <label for="gaz" class="kililou-label"><img src="images/gaz.png" alt="">Gaz</label>
+                        <input type="radio" id="fioul" name="Mode de chauffage"value="fioul">
+                        <label for="fioul"class="kililou-label"><img src="images/fioul.png" alt="">Fioul</label>
+                        <input type="radio" id="charbon_bois" name="Mode de chauffage"value="charbon-bois">
+                        <label for="charbon_bois" class="kililou-label"><img src="images/charbon_bois.png" alt="">Charbon-bois</label>
+                    </div>
+
+                </div>
+
+                <div class="form-slider-4 swiper-slide">
+                    <h4 class="question">Surface de votre habitation ?*</h4>
+
+                    <div class="response">
+                        <input type="radio" id="moins_de_100m2" name="Surface" value="moins_de_100m2">
+                        <label for="moins_de_100m2" class="kililou-label"><img src="images/moins_de_100m.png" alt="">Moins de 100m²</label>
+                        <input type="radio" id="entre_100m2_et_200m2" name="Surface"value="entre_100m2_et_200m2">
+                        <label for="entre_100m2_et_200m2" class="kililou-label"><img src="images/entre_100m2_200m2.png" alt="">Entre 100m² et 200m²</label>
+                        <input type="radio" id="plus_de_200m2" name="Surface"value="plus_de_200m2">
+                        <label for="plus_de_200m2" class="kililou-label"><img src="images/plus_de_200m2.png" alt="">Plus de 200m²</label>
+                    </div>
+
+                </div>
+
+                <div class="form-slider-5 swiper-slide">
+                    <h4 class="question">Montant de votre facture de chauffage par an ?*</h4>
+
+                    <div class="response">
+                        <input type="radio" id="moins_de_1000€" name="Montant de Facture" value="moins_de_1000€">
+                        <label for="moins_de_1000€" class="kililou-label"><img src="images/moins1500.png" alt="">Moins de 1000€/an</label>
+                        <input type="radio" id="entre_1000€_et_1500€" name="Montant de Facture"value="entre_1000€_et_1500€">
+                        <label for="entre_1000€_et_1500€" class="kililou-label"><img src="images/entre1500&2500.png" alt="">Entre 1000€ et 1500€/an</label>
+                        <input type="radio" id="plus_de_1500€" name="Montant de Facture"value="plus_de_1500€">
+                        <label for="plus_de_1500€" class="kililou-label"><img src="images/plus2500.png" alt="">Plus de 1500€/an</label>
+                    </div>
+
+                </div>
+
+                <div class="form-slider-6 swiper-slide">
+                    <h4 class="question">Votre code postal ?*</h4>
+                    <p class="indication">Nécessaire pour calculer vos aides</p>
+
+                    <div class="input-response">
+                        <div class="input-row">
+                            <input type="number" min="0" class="input_" id="code_postal" name="Code postal" placeholder="Répondez ici..." required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-slider-7 swiper-slide">
+                    <h4 class="question">Vos informations *</h4>
+                    <p class="indication">Nécessaire pour calculer vos aides</p>
+
+                    <div class="input-response">
+                        <div class="input-row">
+                            <label for="Prénom">Prénom *</label>
+                            <input type="text" class="input_" id="Prénom" name="Prénom" required placeholder="Julie" aria-label="Saisissez votre prénom">
+                        </div>
+                        <div class="input-row">
+                            <label for="Nom">Nom *</label>
+                            <input type="text" class="input_" id="Nom" name="Nom" required placeholder="Martin" aria-label="Saisissez votre nom">
+                        </div>
+                        <div class="input-row">
+                            <label for="tel">Numéro *</label>
+                            <input type="tel" class="input_" id="tel" name="tel" required placeholder="06 12 34 56 18">
+                        </div>
+                        <div class="input-row">
+                            <label for="email">Email *</label>
+                            <input type="mail" class="input_" id="email" name="email" required placeholder="name@exemple.com" aria-label="Saisissez votre nom">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-slider-8 swiper-slide">
+                    <h4 class="question">Sur quelle plage horaire souhaiter vous être contacté ?*</h4>
+                    <div class="response">
+                        <input type="radio" id="matin" name="Heure Démarchage" value="matin">
+                        <label for="matin" class="kililou-label"><img src="images/matin.png" alt="">Matin</label>
+                        <input type="radio" id="midi" name="Heure Démarchage"value="midi">
+                        <label for="midi" class="kililou-label"><img src="images/midi.png" alt="">Midi</label>
+                        <input type="radio" id="soir" name="Heure Démarchage"value="soir">
+                        <label for="soir" class="kililou-label"><img src="images/soir.png" alt="">Soir</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="avertissement ">
+                <span>Assurez-vous d'avoir rempli tout les champs ou faire une selection</span>
+            </div>
+            <div class="btn-form">
+                <span class="button-next kililou-btn" id="next">ok</span>
+                <input type="submit" class="kililou-btn" id="btnSubmit" value="Envoyer">
+            </div>
+        </form>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

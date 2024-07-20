@@ -1,0 +1,148 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+    width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
+    height: auto !important;
+}
+.question, .indication{
+    text-align: center;
+    color: #283766;
+
+}
+.response{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-row{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.input_ {
+    font-family: inherit;
+    font-size: inherit;
+    width: 100%;
+    border: none;
+    box-shadow: rgba(1, 66, 172, 0.3) 0px 1px;
+    padding-bottom: 8px;
+    outline: none;
+    color: rgb(1, 66, 172);
+}
+
+.input_:focus{
+    /* border-bottom:2px solid #283766 */
+    box-shadow: rgb(1, 66, 172) 0px 2px;
+}
+
+.response label img{
+    width: 150px;
+}
+
+.input-response{
+    width: 65%;
+    margin: 0px 17.5%;
+}
+
+.response input[type=radio]{
+    display: none;
+}
+
+.input-row label{
+    width: 100%;
+    color: rgb(1, 66, 172);;
+}
+
+
+.response label {
+    margin: 0px 15px;
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: rgba(1, 66, 172, 0.1);
+    box-shadow: rgba(1, 66, 172, 0.6) 0px 0px 0px 1px inset;
+    color: rgb(1, 66, 172);
+    /* width: 25%; */
+}
+
+
+.kililou-btn{
+    padding: 5px 15px;
+    border-radius: 16px;
+    background-color: rgba(116, 240, 167, 1);
+    border: none;
+    color: #fff;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.btn-form{
+    color: #fff;
+    padding-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-form span:hover{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    form{
+        font-size: 22px;
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    .response label {
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 45%;
+        text-align: center;
+    }
+    .response {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .input-response {
+        width: 100%;
+        margin: 0px;
+    }
+}
+
+input[type="radio"]:checked + label {
+    background-color: rgba(1, 66, 172, 0.3); /* Un bleu plus foncé */
+    box-shadow: rgba(1, 66, 172, 0.9) 0px 0px 0px 1px; /* Une ombre plus prononcée */
+}
+
+.avertissement{
+    visibility: hidden;
+    text-align: center;
+    margin-top: 30px;
+}
+.avertissement span{
+    color: rgb(175, 4, 4);
+    background-color: rgb(247, 230, 230);
+    border-radius: 3px;
+    align-items: center;
+    padding: 5px;
+}
