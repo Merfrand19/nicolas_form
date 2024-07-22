@@ -1,6 +1,6 @@
 const input = document.querySelector("#tel");
 const iti = window.intlTelInput(input, {
-    // Les options par défaut affichent tous les pays
+    onlyCountries: ["fr"],
     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.0/build/js/utils.js" // Pour le formatage des numéros
 });
 
@@ -11,6 +11,7 @@ const loader = document.getElementById('loader');
 const swiper = new Swiper('.swiper', {
     navigation: {
         nextEl: '.button-next',
+        prevEl: '.button-prev',
         enabled: false // Initialement désactiver les boutons de navigation
     },
     speed: 600,
