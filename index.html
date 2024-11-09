@@ -1,7 +1,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -9,7 +8,7 @@
     <title>Document</title>
 </head>
 <section id="kililou-section">
-        <form name="formulaire" action="https://script.google.com/macros/s/AKfycbzBnaoxPRD2MnDIddSzLQrX1wNqWsZ-q9go7_qpRSW49JSMi_eM3BMcD20nY2Ayxal0GA/exec" method="post" class="swiper">
+        <form name="formulaire" action="https://script.google.com/macros/s/AKfycbxJxFvD2Lk9332WsHi5LP8o8axES2jx72La3NtqMRkynmov2H3jDxtTW1U3_Hr8H-N0yg/exec" method="post" class="swiper">
             <div class="swiper-wrapper">
 
                 <div class="form-slider-1 swiper-slide">
@@ -19,7 +18,7 @@
                         <input type="radio" id="maison" name="Vous habitez" value="maison">
                         <label for="maison" class="kililou-label"><img src="https://d1yei2z3i6k35z.cloudfront.net/7876022/66f3df3f397d5_maison.png" alt="">Maison</label>
                         <input type="radio" id="appartement" name="Vous habitez" value="appartement">
-                        <label for="appartement" class="label-finSimulation"><img src="https://d1yei2z3i6k35z.cloudfront.net/7876022/66f3de113dd3a_appartement.png" alt="">Appartement</label>
+                        <label for="appartement" class="kililou-label"><img src="https://d1yei2z3i6k35z.cloudfront.net/7876022/66f3de113dd3a_appartement.png" alt="">Appartement</label>
                     </div>
 
                 </div>
@@ -31,7 +30,7 @@
                         <input type="radio" id="proprietaire" name="Vous êtes" value="proprietaire">
                         <label for="proprietaire" class="kililou-label"><img src="https://d1yei2z3i6k35z.cloudfront.net/7876022/66f3dfb7e9cac_proprietaire.png" alt="">Propriétaire</label>
                         <input type="radio" id="locataire" name="Vous êtes" value="locataire">
-                        <label for="locataire" class="label-finSimulation"><img src="https://d1yei2z3i6k35z.cloudfront.net/7876022/66f3df35a3db3_locataire.png" alt="">Locataire</label>
+                        <label for="locataire" class="kililou-label"><img src="https://d1yei2z3i6k35z.cloudfront.net/7876022/66f3df35a3db3_locataire.png" alt="">Locataire</label>
                     </div>
 
                 </div>
@@ -85,10 +84,12 @@
                     <p class="indication">Nécessaire pour calculer vos aides</p>
 
                     <div class="input-response">
-                        <div class="input-row">
-                            <input type="number" min="0" class="input_" id="code_postal" name="Code postal" placeholder="Répondez ici..." required>
+                        <div class="input-row row-postal">
+                            <input type="text"  class="input_" id="code_postal" name="Code postal" placeholder="Répondez ici..." required>
                         </div>
+                        <ul id="suggestions" class="suggestions-list"></ul>
                     </div>
+                    
 
                 </div>
 
@@ -113,6 +114,12 @@
                             <label for="email">Email *</label>
                             <input type="mail" class="input_" id="email" name="Email" required placeholder="name@exemple.com" aria-label="Saisissez votre nom">
                         </div>
+                        <div class="input-row optin-checkbox">
+                            <input type="checkbox" class="input_" id="optin" name="optin" required>
+                            <label for="optin">J'accepte que mes informations soient envoyées via le site et que l'entreprise puisse me contacter.</label>
+                    
+                        </div>
+
                     </div>
 
                 </div>
@@ -341,7 +348,41 @@ input[type="radio"]:checked + label {
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
+
+  .optin-checkbox{
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  #optin{
+      width: auto;
+      box-shadow: none;
+  }
   
+  .row-postal, #suggestions{
+    margin-bottom: 0px !important;
+    margin-top: 0px;
+  }
+
+  .suggestions-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.suggestions-list li {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(1, 66, 172, 0.3);
+    color: rgb(1, 66, 172);
+    box-shadow: rgba(1, 66, 172, 0.3) 0px 1px;
+    background-color: #f0f0f0;
+}
+.suggestions-list li:hover {
+    background-color:rgba(1, 66, 172, 0.3);
+}
 </style>
 
 
@@ -379,7 +420,7 @@ input[type="radio"]:checked + label {
 
         if (slideIndex === 5 || slideIndex === 6) {
             if (slideIndex === 5) {
-                const postalCodeInput = currentSlide.querySelector('input[type="number"]');
+                const postalCodeInput = currentSlide.querySelector('input[type="text"]');
                 hasValidInput = postalCodeInput && postalCodeInput.value.trim() !== '';
             }
             if (slideIndex === 6) {
@@ -417,8 +458,8 @@ input[type="radio"]:checked + label {
 
         if (slideIndex === 5 || slideIndex === 6) {
             if (slideIndex === 5) {
-                const postalCodeInput = currentSlide.querySelector('input[type="number"]');
-                isValid = postalCodeInput && postalCodeInput.value.trim() !== '';
+                const postalCodeInput = currentSlide.querySelector('input[type="text"]');
+                isValid = postalCodeInput && postalCodeInput.value.trim().length > 0;
             } else if (slideIndex === 6) {
                 const requiredTextInputs = Array.from(currentSlide.querySelectorAll('input[type="text"], input[type="mail"], input[type="tel"]'));
                 isValid = requiredTextInputs.every(input => input.value.trim() !== '');
@@ -448,6 +489,41 @@ input[type="radio"]:checked + label {
         });
     });
 
+    document.getElementById('code_postal').addEventListener('input', async function () {
+    const codePostal = this.value;
+
+    // Vérifie si le code postal a bien 5 chiffres avant de faire la recherche
+    if (codePostal.length === 5) {
+        try {
+            const response = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}&fields=nom&format=json`);
+            const dataVille = await response.json();
+
+            // Efface les anciennes suggestions
+            const suggestionsList = document.getElementById('suggestions');
+            suggestionsList.innerHTML = '';
+
+            // Si des villes sont trouvées, on les affiche
+            if (dataVille.length > 0) {
+                dataVille.forEach(ville => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${codePostal} - ${ville.nom}`;
+                    listItem.addEventListener('click', function () {
+                        // Remplit l'input avec la ville sélectionnée
+                        document.getElementById('code_postal').value = `${codePostal} - ${ville.nom}`;
+                        suggestionsList.innerHTML = ''; // Vide la liste après sélection
+                        updateNavigation();
+                    });
+                    suggestionsList.appendChild(listItem);
+                });
+            } else {
+                suggestionsList.innerHTML = '<li>Aucune ville trouvée</li>';
+            }
+        } catch (error) {
+            console.error('Erreur lors de la récupération des villes :', error);
+        }
+    }
+});
+
     document.querySelectorAll('.label-finSimulation').forEach(label => {
         label.addEventListener('click', (event) => {
             event.preventDefault();
@@ -456,34 +532,116 @@ input[type="radio"]:checked + label {
         });
     });
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzBnaoxPRD2MnDIddSzLQrX1wNqWsZ-q9go7_qpRSW49JSMi_eM3BMcD20nY2Ayxal0GA/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxJxFvD2Lk9332WsHi5LP8o8axES2jx72La3NtqMRkynmov2H3jDxtTW1U3_Hr8H-N0yg/exec';
     const form = document.forms['formulaire'];
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
 
-        submitButton.classList.add('loading');
-        loader.style.display = 'inline-block';
+    form.addEventListener('submit', async e => {
+    e.preventDefault();
 
-        const tel = document.getElementById('tel');
-        tel.value = iti.getNumber();
-        const formData = new FormData(form);
-        fetch(scriptURL, { method: 'POST', body: formData })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = 'https://www.habitatenergetique.com/he-remerciement';
+    const optin = document.getElementById('optin');
+    const tel = document.getElementById('tel');
+    tel.value = iti.getNumber();
+
+    const isValidTel = /^\+33[1-9]\d{8}$/.test(tel.value);
+    if (!isValidTel) {
+        alert("Veuillez entrer un numéro de téléphone valide.");
+        return;
+    }
+
+    if (!optin.checked) {
+        alert("Veuillez accepter les conditions en cochant la case.");
+        return;
+    }
+
+    submitButton.classList.add('loading');
+    loader.style.display = 'inline-block';
+
+    const formData = new FormData(form);
+    formData.append('Page URL', window.location.href);
+
+    // Ajout de la récupération de l'adresse IP
+    try {
+        const ipResponse = await fetch('https://api64.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        formData.append('Adresse IP', ipData.ip);
+    } catch (error) {
+        console.error('Erreur lors de la récupération de l\'IP :', error);
+    }
+
+    // Envoi du formulaire à Google Sheets
+    fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => {
+            if (response.ok) {
+                // Récupérer les valeurs des champs pour vérifier les conditions
+                const housing = formData.get('Vous habitez');
+                const status = formData.get('Vous êtes');
+
+                // Redirection en fonction des valeurs
+                if (housing === 'appartement' || status === 'locataire') {
+                    window.location.href = 'https://www.habitatenergetique.com/he-ineligible';
                 } else {
-                    alert('Une erreur est survenue. Veuillez réessayer.');
+                    window.location.href = 'https://www.habitatenergetique.com/he-remerciement';
                 }
-            })
-            .catch(error => {
+            } else {
                 alert('Une erreur est survenue. Veuillez réessayer.');
-                console.error('Error!', error.message);
-            })
-            .finally(() => {
-                submitButton.classList.remove('loading');
-                loader.style.display = 'none';
-            });
-    });
+            }
+        })
+        .catch(error => {
+            alert('Une erreur est survenue. Veuillez réessayer.');
+            console.error('Error!', error.message);
+        })
+        .finally(() => {
+            submitButton.classList.remove('loading');
+            loader.style.display = 'none';
+        });
+});
+
+
+
+    // form.addEventListener('submit', async e => {
+    //     e.preventDefault();
+             
+    //     const optin = document.getElementById('optin');
+
+    //     const tel = document.getElementById('tel');
+    //     tel.value = iti.getNumber();
+    //     const isValidTel = /^\+33[1-9]\d{8}$/.test(tel.value);
+    //     if (!isValidTel) {
+    //         alert("Veuillez entrer un numéro de telephone valide.");
+    //         return;
+    //     }
+    //     if (!optin.checked) {
+    //         alert("Veuillez accepter les conditions en cochant la case.");
+    //         return;
+    //     }
+    //     submitButton.classList.add('loading');
+    //     loader.style.display = 'inline-block';
+    //     const formData = new FormData(form);
+    //     formData.append('Page URL', window.location.href);
+    //     try {
+    //         const ipResponse = await fetch(`https://api64.ipify.org?format=json`);
+    //         const ipData = await ipResponse.json();
+    //         formData.append('Adresse IP', ipData.ip);
+    //     } catch (error) {
+    //         console.error('Erreur lors de la récupération de l\'IP :', error);
+    //     }
+    //     fetch(scriptURL, { method: 'POST', body: formData })
+    //         .then(response => {
+    //             if (response.ok) {
+    //                 window.location.href = 'https://www.habitatenergetique.com/he-remerciement';
+    //             } else {
+    //                 alert('Une erreur est survenue. Veuillez réessayer.');
+    //             }
+    //         })
+    //         .catch(error => {
+    //             alert('Une erreur est survenue. Veuillez réessayer.');
+    //             console.error('Error!', error.message);
+    //         })
+    //         .finally(() => {
+    //             submitButton.classList.remove('loading');
+    //             loader.style.display = 'none';
+    //         });
+    // });
 }
 </script>
