@@ -5,6 +5,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.0/build/css/intlTelInput.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <title>Document</title>
 </head>
 <section id="kililou-section">
@@ -124,21 +126,11 @@
 
                 </div>
 
-                <!-- <div class="form-slider-8 swiper-slide">
-                    <h4 class="question">Sur quelle plage horaire souhaiter vous être contacté ?*</h4>
-                    <div class="response">
-                        <input type="radio" id="matin" name="Heure Démarchage" value="matin">
-                        <label for="matin" class="kililou-label"><img src="https://d1yei2z3i6k35z.cloudfront.net/7876022/66f3df4718062_matin.png" alt="">Matin</label>
-                        <input type="radio" id="midi" name="Heure Démarchage" value="midi">
-                        <label for="midi" class="kililou-label"><img src="https://d1yei2z3i6k35z.cloudfront.net/7876022/66f3df5186a20_midi.png" alt="">Midi</label>
-                        <input type="radio" id="soir" name="Heure Démarchage" value="soir">
-                        <label for="soir" class="kililou-label"><img src="https://d1yei2z3i6k35z.cloudfront.net/7876022/66f3dfc861333_soir.png" alt="">Soir</label>
-                    </div>
-                </div> -->
+               
             </div>
             <div class="btn-form">
                 <span class="button-next kililou-btn" id="next">Suivant</span>
-                <input type="submit" class="kililou-btn" id="btnSubmit" value="Envoyer">
+                <input type="submit" class="kililou-btn" id="btnSubmit" value="SIMULER MES AIDES">
                 <div id="loader" style="display: none;"></div>
             </div>
              <div class="avertissement ">
@@ -155,7 +147,7 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 #kililou-section{
-    font-family: "Montserrat";
+    font-family: "Poppins";
 }
 form {
     margin: 0;
@@ -388,7 +380,18 @@ input[type="radio"]:checked + label {
 
 <script >
 
- window.onload= function() {
+    // function sendHeight() {
+    //     parent.postMessage({ height: document.body.scrollHeight }, "*");
+    // }
+    function sendHeight() {
+        setTimeout(() => {
+            parent.postMessage({ height: document.documentElement.scrollHeight }, "*");
+        }, 300); // Petit délai pour bien recalculer la hauteur
+    }
+    window.onload = sendHeight;
+    window.onresize = sendHeight;
+
+//  window.onload= function() {
     const input = document.querySelector("#tel");
     const iti = window.intlTelInput(input, {
         onlyCountries: ["fr"],
@@ -442,10 +445,12 @@ input[type="radio"]:checked + label {
             document.getElementById('next').style.display = 'block';
             document.getElementById('btnSubmit').style.display = 'none';
         }
+        sendHeight();
     }
 
     swiper.on('slideChange', () => {
         updateNavigation();
+        sendHeight();
     });
 
     updateNavigation();
@@ -493,7 +498,7 @@ input[type="radio"]:checked + label {
         label.addEventListener('click', (event) => {
             event.preventDefault();
             document.getElementById('next').style.display = 'none';
-            window.location.href = 'https://www.habitatenergetique.com/he-ineligible';
+            window.top.location.href = 'https://www.habitatenergetique.com/he-ineligible';
         });
     });
 
@@ -546,9 +551,9 @@ input[type="radio"]:checked + label {
 
                 // Redirection en fonction des valeurs
                 if (housing === 'appartement' || status === 'locataire') {
-                    window.location.href = 'https://www.habitatenergetique.com/he-ineligible';
+                    window.top.location.href = 'https://www.habitatenergetique.com/he-ineligible';
                 } else {
-                    window.location.href = 'https://www.habitatenergetique.com/he-remerciement';
+                    window.top.location.href = 'https://www.habitatenergetique.com/he-remerciement';
                 }
             } else {
                 alert('Une erreur est survenue. Veuillez réessayer.');
@@ -567,5 +572,5 @@ input[type="radio"]:checked + label {
 
 
    
-}
+//}
 </script>
